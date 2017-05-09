@@ -62,10 +62,11 @@ app.post('/webhook/', function(req, res) {
 					question_favplayers = false
 					question_favmanager = true
 				} else if(question_favmanager) {
-					question_favmanager = text
+					question_favmanagerVal = text
 					football = false
 					question_favmanager = false
 					sendText(sender, "İlgi alanı: Futbol" + " Tutulan takım: " + question_teamVal +" Favori Oyuncular: " + question_favplayersVal + " En iyi teknik direktör: " + question_favmanagerVal)
+					
 					football = false
 					question_team = false
 					question_favplayers = false
