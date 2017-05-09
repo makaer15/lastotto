@@ -76,7 +76,7 @@ app.post('/webhook/', function(req, res) {
 					question_favmanagerVal = ""
 				}
 			} 	
-			// sendText(sender, "Text echo: " + text.substring(0, 100))						
+			sendText(sender, "Text echo: " + text.substring(0, 100))						
 			
 
 
