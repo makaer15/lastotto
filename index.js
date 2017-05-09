@@ -75,8 +75,10 @@ app.post('/webhook/', function(req, res) {
 					question_favplayersVal = ""
 					question_favmanagerVal = ""
 				}
-			} 	
-			sendText(sender, "Text echo: " + text.substring(0, 100))						
+			} else {
+				sendText(sender, "Text echo: " + text.substring(0, 100))	
+			}	
+									
 			
 
 
