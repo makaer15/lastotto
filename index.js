@@ -77,7 +77,7 @@ app.post('/webhook/', function(req, res) {
 					question_favmanagerVal = ""
 				}
 			} else {
-				sendText(sender, "Text echo: " + text.substring(0, 100))	
+				sendText(sender, "İlgi alanlarından birisine ihtiyacım var. Şunlardan birisini seçebilirsin: Futbol, Kitaplar.")	
 			}	
 									
 			
