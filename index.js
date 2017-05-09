@@ -65,7 +65,7 @@ app.post('/webhook/', function(req, res) {
 					question_favmanagerVal = text
 					football = false
 					question_favmanager = false
-					sendText(sender, "İlgi alanı: Futbol" + " Tutulan takım: " + question_teamVal +" Favori Oyuncular: " + question_favplayersVal + " En iyi teknik direktör: " + question_favmanagerVal)
+					sendText(sender, "İlgi alanı: Futbol\n" + " Tutulan takım: " + question_teamVal +"\nFavori Oyuncular: " + question_favplayersVal + "\nEn iyi teknik direktör: " + question_favmanagerVal)
 					
 					football = false
 					question_team = false
