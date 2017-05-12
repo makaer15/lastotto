@@ -241,7 +241,7 @@ app.post('/webhook/', function(req, res) {
 			    }
 			 
             } else {
-				sendText(sender, "İlgi alanlarından birisine ihtiyacım var. Şunlardan birisini seçebilirsin: futbol, kitap. Kendi ilgi alanını söylemek için ilgi yaz.")	
+				sendText(sender, "İlgi alanlarından birisine ihtiyacım var. Şunlardan birisini seçebilirsin: futbol, kitap, müzik, araba, film, oyun. Kendi ilgi alanını söylemek için lütfen ilgi yaz.")	
 			}
 		}
 	}
