@@ -122,8 +122,9 @@ app.post('/webhook/', function(req, res) {
 			} else if(ilgi) {
 				ilgiVal = text
 				ilgi = false
+				sendText(sender, "İlgi alanı: " + ilgiVal)
 			}else {
-				sendText(sender, "İlgi alanlarından birisine ihtiyacım var. Şunlardan birisini seçebilirsin: futbol, kitap. Kendi ilgi alanını söylemek için ilgi yazabilirsin.")	
+				sendText(sender, "İlgi alanlarından birisine ihtiyacım var. Şunlardan birisini seçebilirsin: futbol, kitap. Kendi ilgi alanını söylemek için ilgi yaz.")	
 			}
 		}
 	}
