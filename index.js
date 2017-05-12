@@ -70,7 +70,23 @@ app.post('/webhook/', function(req, res) {
 			} else if(text.includes("ilgi")) {
 				sendText(sender, "İlgi alanınız veya yapmaktan hoşlandığınız şey nedir?");
 				ilgi = true
-			}
+			} else if(text.includes("müzik")) {
+				music = true
+				sendText(sender, "Hangi tür müziklerden hoşlanırsın")
+				question_musicType = true	
+			} else if(text.includes("araba")) {
+				car = true
+				sendText(sender, "Hangi tür arabalardan hoşlanırsın")
+				question_carType = true	
+			} else if (text.includes("film")) {
+				movie=true
+				sendText(sender, "Hangi tür filmlerden hoşlanırsın")
+				question_movieType = true	
+            } else if (text.includes("oyun")) {
+				game=true
+				sendText(sender, "Hangi tür oyunlardan hoşlanırsın")
+				question_gameType = true	
+            }
 			else if(books) { // ******************************************************************************************
 				if(question_booktype) {
 					question_booktypeVal = text
@@ -108,7 +124,7 @@ app.post('/webhook/', function(req, res) {
 					question_favmanagerVal = text
 					football = false
 					question_favmanager = false
-					sendText(sender, "İlgi alanı: Futbol\n" + " Tutulan takım: " + question_teamVal +"\nFavori Oyuncular: " + question_favplayersVal + "\nEn iyi teknik direktör: " + question_favmanagerVal)
+					sendText(sender, "İlgi alanı: Futbol\n" + "Tutulan takım: " + question_teamVal +"\nFavori Oyuncular: " + question_favplayersVal + "\nEn iyi teknik direktör: " + question_favmanagerVal)
 					
 					football = false
 					question_team = false
@@ -123,7 +139,108 @@ app.post('/webhook/', function(req, res) {
 				ilgiVal = text
 				ilgi = false
 				sendText(sender, "İlgi alanı: " + ilgiVal)
-			}else {
+			} 
+
+
+			else if (music) {
+				if(question_musicType) {
+					question_musicTypeValue = text
+					question_musicType = false
+					question_localorforeign = true
+					sendText(sender, question_musicTypeValue + " müziklerden yerli mi yabancı mı daha çok seversin?")
+			}
+
+			 else if(question_localorforeign) {
+					question_localorforeignVal = text
+					question_localorforeign = false
+					question_favSinger = true
+					sendText(sender, "Sevdiğin 2 tane şarkıcı söyler misin?")
+			} else if(question_favSinger) {
+					question_favSinger = false
+					question_faveSingerValue = text
+					question_favSing = true
+					sendText(sender, "En sevdiğiniz şarkının adı nedir?")
+			}
+			  else if(question_favSing) {
+					question_favSing = false
+					question_faceSingValue = text
+					music = false
+					sendText(sender, "İlgi alanı: Müzik.\nTür: " + question_musicTypeValue + "\nYerli/Yabancı: " + question_localorforeignVal +  "\nŞarkıcı: " + question_faveSingerValue + "\nEn sevdiğiniz şarkı: " + question_faceSingValue)
+					question_faceSingValue = ""
+					question_faveSingerValue = ""
+					question_localorforeignVal = ""
+					
+				}
+
+			}	
+
+
+			else if (car) {
+				if(question_carType) {
+					question_carTypeValue = text
+					question_carType = false
+					question_carBrand = true
+					sendText(sender, " hangi marka arbalardan hoşlanırsın?")
+			    }
+
+			    else if(question_carBrand) {
+					question_carBrandValue = text
+					question_carBrand = false
+					question_favCarModel = true
+					sendText(sender, "En sevdiğin araba modeli nedir")
+			    } 
+			    else if(question_favCarModel) {
+					question_favCarModel = false
+					question_favCarModelValue = text
+					question_favCarModel = true
+					sendText(sender, "İlgi alanı: Araba.\nTür: " + question_carTypeValue +  "\nMarka: " + question_carBrandValue + "\nEn sevdiğiniz model: " + question_favCarModelValue)
+
+			    }
+			 
+            }
+
+            
+            else if (movie) {
+				if(question_movieType) {
+					question_movieTypeValue = text
+					question_movieType = false
+					question_movieName = true
+					sendText(sender, " favori filmin nedir?")
+			    }
+
+			    else if(question_movieName) {
+					question_movieName = false
+					question_movieNameValue = text
+					question_movieName = true
+					sendText(sender, "İlgi alanı: film.\nTür: " + question_movieTypeValue +  "\nFavori film: " + question_movieNameValue)
+
+			    }
+			 
+            }
+
+            else if (game) {
+				if(question_gameType) {
+					question_gameTypeValue = text
+					question_gameType = false
+					question_ganePlatform = true
+					sendText(sender, " hangi platformda oyun oynamayı seversin?")
+			    }
+
+			    else if(question_ganePlatform) {
+					question_gamePlatformValue = text
+					question_ganePlatform = false
+					question_gameName = true
+					sendText(sender, "En sevdiğin oyun nedir")
+			    } 
+			    else if(question_gameName) {
+					question_gameName = false
+					question_gameNameValue = text
+					question_gameName = true
+					sendText(sender, "İlgi alanı: Oyun.\nTür: " + question_gameTypeValue +  "\nPlatform: " + question_gamePlatformValue + "\nEn sevdiğiniz oyun: " + question_gameNameValue)
+
+			    }
+			 
+            } else {
 				sendText(sender, "İlgi alanlarından birisine ihtiyacım var. Şunlardan birisini seçebilirsin: futbol, kitap. Kendi ilgi alanını söylemek için ilgi yaz.")	
 			}
 		}
