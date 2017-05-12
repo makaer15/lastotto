@@ -52,6 +52,40 @@ var question_localorforeignVal = ""
 var question_favAuthorVal = ""
 var question_lastBookReadVal = ""
 
+var car=false;
+var question_carType=false;
+var question_carBrand=false;
+var question_favCarModel=false;
+
+var question_carTypeValue="";
+var question_carBrandValue="";
+var question_favCarModelValue="";
+
+var movie=false;
+var question_movieType=false;
+var question_movieName=false;
+
+var question_movieTypeValue="";
+var question_movieNameValue="";
+
+var game=false;
+var question_gameType=false;
+var question_ganePlatform=false;
+var question_gameName=false;
+
+var question_gameTypeValue="";
+var question_gamePlatformValue="";
+var question_gameNameValue="";
+
+var music = false;
+var question_musicType=false;
+var question_favSinger=false;
+var question_favSing=false;
+
+var question_musicTypeValue = "";
+var question_faveSingerValue= "";
+var question_faceSingValue="";
+
 app.post('/webhook/', function(req, res) {
 	let messaging_events = req.body.entry[0].messaging
 	for(let i = 0; i < messaging_events.length; i++) {
