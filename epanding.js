@@ -18,11 +18,6 @@ var question_localorforeignVal = ""
 var question_favAuthorVal = ""
 var question_lastBookReadVal = ""
 
-
-
-
-
-
 app.post('/webhook/', function(req, res) {
 	let messaging_events = req.body.entry[0].messaging
 	for(let i = 0; i < messaging_events.length; i++) {
@@ -89,10 +84,6 @@ app.post('/webhook/', function(req, res) {
 			} else {
 				sendText(sender, "İlgi alanlarından birisine ihtiyacım var. Şunlardan birisini seçebilirsin: Futbol, Kitaplar.")	
 			}	
-									
-			
-
-
 		}
 	}
 	res.sendStatus(200)

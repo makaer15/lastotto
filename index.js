@@ -30,11 +30,13 @@ app.get('/webhook/', function(req, res) {
 	res.send("Wrong token")
 })
 
+var ilgi = false;
 var football = false;
 var question_team = false
 var question_favplayers = false
 var question_favmanager = false
 
+var ilgiVal = ""
 var question_teamVal = ""
 var question_favplayersVal = ""
 var question_favmanagerVal = ""
@@ -65,7 +67,11 @@ app.post('/webhook/', function(req, res) {
 				books = true
 				sendText(sender, "Hangi tür kitaplardan hoşlanırsın?")
 				question_booktype = true
-			} else if(books) { // ******************************************************************************************
+			} else if(text.includes("ilgi")) {
+				sendText(sender, "İlgi alanınız veya yapmaktan hoşlandığınız şey nedir?");
+				ilgi = true
+			}
+			else if(books) { // ******************************************************************************************
 				if(question_booktype) {
 					question_booktypeVal = text
 					question_booktype = false
@@ -113,13 +119,12 @@ app.post('/webhook/', function(req, res) {
 					question_favplayersVal = ""
 					question_favmanagerVal = ""
 				}
-			} else {
-				sendText(sender, "İlgi alanlarından birisine ihtiyacım var. Şunlardan birisini seçebilirsin: Futbol, Kitaplar.")	
-			}	
-									
-			
-
-
+			} else if(ilgi) {
+				ilgiVal = text
+				ilgi = false
+			}else {
+				sendText(sender, "İlgi alanlarından birisine ihtiyacım var. Şunlardan birisini seçebilirsin: futbol, kitap. Kendi ilgi alanını söylemek için ilgi yazabilirsin.")	
+			}
 		}
 	}
 	res.sendStatus(200)
