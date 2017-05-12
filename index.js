@@ -226,7 +226,7 @@ app.post('/webhook/', function(req, res) {
 			    else if(question_favCarModel) {
 					question_favCarModel = false
 					question_favCarModelValue = text
-					question_favCarModel = true
+					car = false
 					sendText(sender, "İlgi alanı: Araba.\nTür: " + question_carTypeValue +  "\nMarka: " + question_carBrandValue + "\nEn sevdiğiniz model: " + question_favCarModelValue)
 
 			    }
@@ -245,7 +245,7 @@ app.post('/webhook/', function(req, res) {
 			    else if(question_movieName) {
 					question_movieName = false
 					question_movieNameValue = text
-					question_movieName = true
+					movie = false
 					sendText(sender, "İlgi alanı: film.\nTür: " + question_movieTypeValue +  "\nFavori film: " + question_movieNameValue)
 
 			    }
@@ -269,7 +269,7 @@ app.post('/webhook/', function(req, res) {
 			    else if(question_gameName) {
 					question_gameName = false
 					question_gameNameValue = text
-					question_gameName = true
+					game = false
 					sendText(sender, "İlgi alanı: Oyun.\nTür: " + question_gameTypeValue +  "\nPlatform: " + question_gamePlatformValue + "\nEn sevdiğiniz oyun: " + question_gameNameValue)
 
 			    }
