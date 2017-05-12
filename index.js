@@ -214,14 +214,14 @@ app.post('/webhook/', function(req, res) {
 					question_carTypeValue = text
 					question_carType = false
 					question_carBrand = true
-					sendText(sender, " hangi marka arbalardan hoşlanırsın?")
+					sendText(sender, "Hangi marka arabalardan hoşlanırsın?")
 			    }
 
 			    else if(question_carBrand) {
 					question_carBrandValue = text
 					question_carBrand = false
 					question_favCarModel = true
-					sendText(sender, "En sevdiğin araba modeli nedir")
+					sendText(sender, "En sevdiğin araba modeli nedir?")
 			    } 
 			    else if(question_favCarModel) {
 					question_favCarModel = false
@@ -239,7 +239,7 @@ app.post('/webhook/', function(req, res) {
 					question_movieTypeValue = text
 					question_movieType = false
 					question_movieName = true
-					sendText(sender, " favori filmin nedir?")
+					sendText(sender, " Favori filmin nedir?")
 			    }
 
 			    else if(question_movieName) {
@@ -257,14 +257,14 @@ app.post('/webhook/', function(req, res) {
 					question_gameTypeValue = text
 					question_gameType = false
 					question_ganePlatform = true
-					sendText(sender, " hangi platformda oyun oynamayı seversin?")
+					sendText(sender, "Hangi platformda oyun oynamayı seversin?")
 			    }
 
 			    else if(question_ganePlatform) {
 					question_gamePlatformValue = text
 					question_ganePlatform = false
 					question_gameName = true
-					sendText(sender, "En sevdiğin oyun nedir")
+					sendText(sender, "En sevdiğin oyun nedir?")
 			    } 
 			    else if(question_gameName) {
 					question_gameName = false
