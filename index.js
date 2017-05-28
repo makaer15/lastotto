@@ -3,8 +3,10 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const request = require('request')
+const mysql = require('mysql')
 
 const app = express()
+
 
 app.set('port', (process.env.PORT || 5000))
 
@@ -12,6 +14,26 @@ app.set('port', (process.env.PORT || 5000))
 
 app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json())
+
+// SQL
+
+const connection = mysql.createConnection({
+	host:'us-cdbr-iron-east-03.cleardb.net',
+	user:'b5205c69d0fec4',
+	password:'68f67dfb',
+	database: 'heroku_566804f49eae7b0'
+});
+connection.connect();
+
+// app.get('/ottodb',function(req,res){
+// 	connection.query('SELECT * from _tableName_', function(err, rows, fields){
+// 		if (err){
+// 			console.log('error', err);
+// 			throw err;
+// 		}
+// 		response.send(["Eh..", rows]);
+// 	});
+// });
 
 // Routes
 
