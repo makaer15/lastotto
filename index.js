@@ -35,17 +35,17 @@ connection.connect();
 // 	});
 // });
 
-app.get('ottodb/adduser',function(req,res){
-	connection.query(/*Query here*/);
-});
+// app.get('ottodb/adduser',function(req,res){
+// 	connection.query(/*Query here*/);
+// });
 
-app.get('ottodb/addinterest', function(req,res){
-	connection.query(/*Query here*/);
-});
+// app.get('ottodb/addinterest', function(req,res){
+// 	connection.query(/*Query here*/);
+// });
 
-app.get('ottodb/adduserinterest', function(req,res){
-	connection.query(/*Query here*/);
-});
+// app.get('ottodb/adduserinterest', function(req,res){
+// 	connection.query(/*Query here*/);
+// });
 
 
 // Routes
