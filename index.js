@@ -25,27 +25,106 @@ const connection = mysql.createConnection({
 });
 connection.connect();
 
-// app.get('/ottodb',function(req,res){
-// 	connection.query('SELECT * from _tableName_', function(err, rows, fields){
-// 		if (err){
-// 			console.log('error', err);
-// 			throw err;
-// 		}
-// 		response.send(["Eh..", rows]);
-// 	});
-// });
+// app.get('/isUserExists', function (req, res){
+//   // userid will be got from the conversation.
+//    connection.isUserExists('select count(*) as count from user where userid = ' + userid, function (err,rows,fields){
+//     if (err){
+//       console.log('error: ',err);
+//       throw err;
+//     }
+//     res.send(["Eh..", rows]);
+// })
 
-// app.get('ottodb/adduser',function(req,res){
-// 	connection.query(/*Query here*/);
-// });
 
-// app.get('ottodb/addinterest', function(req,res){
-// 	connection.query(/*Query here*/);
-// });
+// app.get('/isInterestExists', function (req, res){ 
+//   // interestname will be got from the conversation.
+//   connection.isInterestExists('select count(*) as count from interest where name = ' + interestname, function (err,rows,fields){
+//     if (err){
+//       console.log('error: ',err);
+//       throw err;
+//     }
+//     res.send(["Eh..", rows]);
+//   });
+// })
 
-// app.get('ottodb/adduserinterest', function(req,res){
-// 	connection.query(/*Query here*/);
-// });
+
+// app.get('/isInterestExistsForUser', function (req, res){ 
+//   // userid will be got from the conversation.
+//   // interestid will be got from the method queryInterestid.
+//   connection.isInterestExistsForUser('select *, count(*) as count from interest_user inner join user on interest_user.userid2 = user.userid where interest_user.userid2 = ' +
+//   userid + ' and interest_user.interestid2 = ' + interestid, function (err,rows,fields){
+//     if (err){
+//       console.log('error: ',err);
+//       throw err;
+//     }
+//     res.send(["Eh..", rows]);
+//   });
+// })
+
+
+
+// app.get('/insertUser', function (req, res){ 
+//   // userid will be got from the conversation. Before using this, check the user exists in the db first using the implemented method.
+//   connection.insertUser('insert into user values(' + userid + ')', function (err,rows,fields){
+//     if (err){
+//       console.log('error: ',err);
+//       throw err;
+//     }
+//     res.send(["Eh..", rows]);
+//   });
+// })
+
+
+// app.get('/insertInterest', function (req, res){ 
+//   // interestname will be got from the conversation.
+//   connection.insertInterest('insert into interest values(' + interestname + ')', function (err,rows,fields){
+//     if (err){
+//       console.log('error: ',err);
+//       throw err;
+//     }
+//     res.send(["Eh..", rows]);
+//   });
+// })
+
+// app.get('/insertInterestForUser', function (req, res){ 
+//   // userid will be got from the conversation.
+//   // interestid will be got from queryInterestid method if it exists. If it does not, it will be created and queried again to get its id.
+//   connection.insertInterestForUser('insert into interest_user values(' + userid + ', ' + interestid  + ')', function (err,rows,fields){
+//     if (err){
+//       console.log('error: ',err);
+//       throw err;
+//     }
+//     res.send(["Eh..", rows]);
+
+//   });
+// })
+
+
+// app.get('/queryInterestid', function (req, res){ 
+//   // interestname will be got from the conversation.
+//   connection.queryInterestid('select interestid from interest where name = ' + interestname, function (err,rows,fields){
+//     if (err){
+//       console.log('error: ',err);
+//       throw err;
+//     }
+//     res.send(["Eh..", rows]);
+//   });
+// })
+
+// app.get('/queryUsers', function (req, res){ 
+//   // interest will be got from the conversation and then its id will be found using methods when user asks for a recommendation.
+//   connection.queryUsers('select userid from interest_user where interestid2 = ' + interestid, function (err,rows,fields){
+//     if (err){
+//       console.log('error: ',err);
+//       throw err;
+//     }
+//     res.send(["Eh..", rows]);
+//   });
+
+// })
+
+
+
 
 
 // Routes
