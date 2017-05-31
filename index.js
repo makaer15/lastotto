@@ -17,13 +17,36 @@ app.use(bodyParser.json())
 
 // SQL
 
-const connection = mysql.createConnection({
+var db_config = {
 	host:'us-cdbr-iron-east-03.cleardb.net',
 	user:'b5205c69d0fec4',
 	password:'68f67dfb',
 	database: 'heroku_566804f49eae7b0'
-});
-connection.connect();
+};
+
+var connection;
+
+function handleDisconnect() {
+    console.log('1. connecting to db:');
+    connection = mysql.createConnection(db_config); 
+													
+
+    connection.connect(function(err) {              	
+        if (err) {                                     
+            console.log('2. error when connecting to db:', err);
+            setTimeout(handleDisconnect, 1000); 
+        }                                     
+    });                                     	
+    connection.on('error', function(err) {
+        console.log('3. db error', err);
+        if (err.code === 'PROTOCOL_CONNECTION_LOST') { 	
+            handleDisconnect();                      	
+        } else {                                      
+            throw err;                                  
+        }
+    });
+}
+handleDisconnect();
 
 app.get('/showUsers', function(req,res){
 	connection.query('select * from user', function(err,rows, fields){
