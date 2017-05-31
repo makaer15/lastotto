@@ -55,7 +55,7 @@ app.get('/showinterests', function(req,res){
 			console.log('error', err);
 			throw err;
 		}else
-			response.send(["",rows]);
+			res.send(["",rows]);
 	});
 });
 
