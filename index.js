@@ -25,6 +25,16 @@ const connection = mysql.createConnection({
 });
 connection.connect();
 
+app.get('/showUsers', function(req,res){
+	connection.query('select * from user', function(err,rows, fields){
+		if (err){
+			console.log('error', err);
+			throw err;
+		}
+		response.send(["",rows]);
+	})
+});
+
 // app.get('/isUserExists', function (req, res){
 //   // userid will be got from the conversation.
 //    connection.isUserExists('select count(*) as count from user where userid = ' + userid, function (err,rows,fields){
@@ -32,7 +42,7 @@ connection.connect();
 //       console.log('error: ',err);
 //       throw err;
 //     }
-//     res.send(["Eh..", rows]);
+//     res.send(["", rows]);
 // })
 
 
@@ -43,7 +53,7 @@ connection.connect();
 //       console.log('error: ',err);
 //       throw err;
 //     }
-//     res.send(["Eh..", rows]);
+//     res.send(["", rows]);
 //   });
 // })
 
@@ -57,7 +67,7 @@ connection.connect();
 //       console.log('error: ',err);
 //       throw err;
 //     }
-//     res.send(["Eh..", rows]);
+//     res.send(["", rows]);
 //   });
 // })
 
@@ -70,7 +80,7 @@ connection.connect();
 //       console.log('error: ',err);
 //       throw err;
 //     }
-//     res.send(["Eh..", rows]);
+//     res.send(["", rows]);
 //   });
 // })
 
@@ -82,7 +92,7 @@ connection.connect();
 //       console.log('error: ',err);
 //       throw err;
 //     }
-//     res.send(["Eh..", rows]);
+//     res.send(["", rows]);
 //   });
 // })
 
@@ -94,7 +104,7 @@ connection.connect();
 //       console.log('error: ',err);
 //       throw err;
 //     }
-//     res.send(["Eh..", rows]);
+//     res.send(["", rows]);
 
 //   });
 // })
@@ -107,7 +117,7 @@ connection.connect();
 //       console.log('error: ',err);
 //       throw err;
 //     }
-//     res.send(["Eh..", rows]);
+//     res.send(["", rows]);
 //   });
 // })
 
@@ -118,7 +128,7 @@ connection.connect();
 //       console.log('error: ',err);
 //       throw err;
 //     }
-//     res.send(["Eh..", rows]);
+//     res.send(["", rows]);
 //   });
 
 // })
