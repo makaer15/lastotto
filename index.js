@@ -28,11 +28,12 @@ connection.connect();
 app.get('/showUsers', function(req,res){
 	connection.query('select * from user', function(err,rows, fields){
 		if (err){
+			
 			console.log('error', err);
 			throw err;
-		}
-		response.send(["",rows]);
-	})
+		}else
+			response.send(["",rows]);
+	});
 });
 
 // app.get('/isUserExists', function (req, res){
