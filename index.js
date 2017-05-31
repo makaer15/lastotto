@@ -48,8 +48,8 @@ function handleDisconnect() {
 }
 handleDisconnect();
 
-app.get('/showUsers', function(req,res){
-	connection.query('select * from user', function(err,rows, fields){
+app.get('/showinterests', function(req,res){
+	connection.query('select * from interest', function(err,rows, fields){
 		if (err){
 			
 			console.log('error', err);
