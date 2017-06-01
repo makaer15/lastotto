@@ -4,7 +4,7 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const request = require('request')
 const mysql = require('mysql')
-
+const parse5 = require('parse5')
 const app = express()
 
 app.set('port', (process.env.PORT || 5000))
@@ -272,22 +272,27 @@ function addUser(username){
 }
 
 function getProfile (id) {
-  var jsonArray;
-   request({
-   method: 'GET',
-   uri: `https://graph.facebook.com/v2.6/${id}`,
-   qs: {
-   fields: 'first_name,last_name,profile_pic,locale,timezone,gender',
- access_token: token
- },
-  json: true
-  }, function (error, response, body) {
+//   var jsonArray;
+//    request({
+//    method: 'GET',
+//    uri: `https://graph.facebook.com/v2.6/${id}`,
+//    qs: {
+//    fields: 'first_name,last_name,profile_pic,locale,timezone,gender',
+//  access_token: token
+//  },
+//   json: true
+//   }, function (error, response, body) {
 
-    if (!error && response.statusCode === 200) {
-      // jsonArray = JSON.parse('[' + body + ']');
-        return response;
-    }
-})
+//     if (!error && response.statusCode === 200) {
+//       // jsonArray = JSON.parse('[' + body + ']');
+//         return response;
+//     }
+// })
+
+request(`https://graph.facebook.com/v2.6/${id}`, function(error, response, body){
+    if(error) console.log(error);
+    else console.log(parse5.parse(body).childNodes[1].tagName);
+});
  }
 
 
