@@ -282,7 +282,7 @@ function getUsername(sender){
 		if(error) {
 			console.log("sending error")
 		} else if(response.body.error) {
-			console.log("response body error")
+			console.log("can go past this doe")
 		}
     else {console.log(body);
       jsonOBJ = body;
