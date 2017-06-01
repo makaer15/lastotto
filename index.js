@@ -342,7 +342,7 @@ function getUsername(sender,foo){
     var username = jsonOBJ.first_name + ' ' +jsonOBJ.last_name;
     var greeting = 'Merhaba ' + username + '!';
     if (foo === true){
-    sendText(sender,greetings);
+    sendText(sender,greeting);
     sendText(sender, "\"ilgi\" yazıp ilgi alanını söyleyebilirsin veya \"arkadaş\" yazarak sana önerdiğimiz arkadaşları görebilirsin.");
     addUser(username);
     }else if (foo === false){
