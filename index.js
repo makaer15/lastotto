@@ -287,9 +287,9 @@ function getUsername(sender){
     else {console.log(body);
       jsonOBJ = body;
       console.log(jsonOBJ.first_name + ' ' +jsonOBJ.last_name);
-      console.log('['+ jsonOBJ + ']')
+      // console.log('['+ jsonOBJ + ']')
     // return jsonOBJ.first_name;
-    var username = jsonOBJ.first_name + ' ' +jsonOBJ.last_name
+    var username = 'Merhaba ' + jsonOBJ.first_name + ' ' +jsonOBJ.last_name + '!';
     sendText(sender,username);
   }
 	})
@@ -307,16 +307,17 @@ app.post('/webhook/', function(req, res) {
 				ilgi = true
 				sendText(sender, "İlgi alanınız nedir?")
 				question_ilgi = true
-			} else if (text.includes("dis")){
+			} /*else if (text.includes("dis")){
 				// sendText(sender,getUsername(sender))
         getUsername(sender)
-			} else if(text.includes("arkadaş")) {
+			}*/ else if(text.includes("arkadaş")) {
 				sendText(sender, "Arıyoruz.")
 			} else if(ilgi) {
 				addInterest(text)
 				question_ilgi = false
 				ilgi = false
 			} else {
+        getUsername(sender);
 				sendText(sender, "Merhaba, \"ilgi\" yazıp ilgi alanını söyleyebilirsin veya \"arkadaş\" yazarak sana önerdiğimiz arkadaşları görebilirsin.")
 			}
 		}
