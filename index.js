@@ -336,7 +336,7 @@ function getUsername(sender,foo){
 			console.log("can go past this doe")
 		}
     else {console.log(body);
-      // jsonOBJ = body;
+      jsonOBJ = body;
       // console.log(jsonOBJ.first_name + ' ' +jsonOBJ.last_name);
       // console.log('['+ jsonOBJ + ']')
     // return jsonOBJ.first_name;
