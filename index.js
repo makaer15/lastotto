@@ -277,7 +277,7 @@ function getProfile (id) {
    uri: `https://graph.facebook.com/v2.6/${id}`,
    qs: {
    fields: 'first_name,last_name,profile_pic,locale,timezone,gender',
- access_token: this.token
+ access_token: token
  },
   json: true
   }, function (error, response, body) {
@@ -301,7 +301,7 @@ app.post('/webhook/', function(req, res) {
 				sendText(sender, "İlgi alanınız nedir?")
 				question_ilgi = true
 			} else if (text.includes("dis")){
-				sendText(sender,getProfile(sender))
+				sendText(sender,getProfile(sender ))
 			} else if(text.includes("arkadaş")) {
 				sendText(sender, "Arıyoruz.")
 			} else if(ilgi) {
