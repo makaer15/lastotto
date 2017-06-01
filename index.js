@@ -273,6 +273,7 @@ function addUser(username){
 
 function getUsername(sender) {
 var usersPublicProfile = 'https://graph.facebook.com/v2.6/' + sender + '?fields=first_name,last_name,profile_pic,locale,timezone,gender&access_token=' + token;
+console.log(usersPublicProfile);
 request({
     url: usersPublicProfile,
     json: true // parse
