@@ -285,7 +285,7 @@ function getProfile (id) {
 
     if (!error && response.statusCode === 200) {
       jsonArray = JSON.parse('[' + body + ']');
-        return jsonArray[0].first_name;
+        return body;
     }
 })
  }
