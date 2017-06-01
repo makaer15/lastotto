@@ -271,17 +271,30 @@ function addUser(username){
 	})
 }
 
-function getUsername(sender) {
-var usersPublicProfile = 'https://graph.facebook.com/v2.6/' + sender + '?fields=first_name,last_name,profile_pic,locale,timezone,gender&access_token=' + token;
-console.log(usersPublicProfile);
-request({
-    url: usersPublicProfile,
-    json: true // parse
-}, function (error, response, body) {
-        if (!error && response.statusCode === 200) {
-            return body.first_name;
-        }
-    });
+function getUsername(id,cb) {
+// var usersPublicProfile = 'https://graph.facebook.com/v2.6/' + sender + '?fields=first_name,last_name,profile_pic,locale,timezone,gender&access_token=' + token;
+// console.log(usersPublicProfile);
+// request({
+//     url: usersPublicProfile,
+//     json: true // parse
+// }, function (error, response, body) {
+//         if (!error && response.statusCode === 200) {
+//             return body.first_name;
+//         }
+//     });
+// request({
+//    method: 'GET',
+//    uri: `https://graph.facebook.com/v2.6/${id}`,
+//    qs: {
+//    fields: 'first_name,last_name,profile_pic,locale,timezone,gender',
+//  access_token: token
+//  },
+//   json: true
+//   }, (err, res, body) => {
+//    if (err) return cb(err)
+//    if (body.error) return cb(body.error)
+//    cb(null, body)
+//   })
 };
 
 
@@ -297,7 +310,21 @@ app.post('/webhook/', function(req, res) {
 				sendText(sender, "İlgi alanınız nedir?")
 				question_ilgi = true
 			} else if (text.includes("dis")){
-				sendText(sender,getUsername(sender))
+				sendText(sender,function getProfile (id, cb) {
+  request({
+   method: 'GET',
+   uri: `https://graph.facebook.com/v2.6/${id}`,
+   qs: {
+   fields: 'first_name,last_name,profile_pic,locale,timezone,gender',
+ access_token: this.token
+ },
+  json: true
+  }, (err, res, body) => {
+   if (err) return cb(err)
+   if (body.error) return cb(body.error)
+   cb(null, body)
+  })
+ })
 			} else if(text.includes("arkadaş")) {
 				sendText(sender, "Arıyoruz.")
 			} else if(ilgi) {
