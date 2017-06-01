@@ -239,22 +239,22 @@ var question_ilgi = false;
 
 var getIlgi = "";
 
-var isUserExists_userid = ;
+// var isUserExists_userid = ;
 
-var isInterestExists_interestname = ;
+// var isInterestExists_interestname = ;
 
-var isInterestExistsForUser_interestid = ;
+// var isInterestExistsForUser_interestid = ;
 
-var insertUser_userid = ;
+// var insertUser_userid = ;
 
-var insertInterest_interestname = ;
+// var insertInterest_interestname = ;
 
-var insertInterestForUser_userid = ;
-var insertInterestForUser_interestid = ;
+// var insertInterestForUser_userid = ;
+// var insertInterestForUser_interestid = ;
 
-var queryInterestid_interestname = ;
+// var queryInterestid_interestname = ;
 
-var queryUsers_interestid = ;
+// var queryUsers_interestid = ;
 
 
 function addInterest(interest){
@@ -287,7 +287,6 @@ app.post('/webhook/', function(req, res) {
 				sendText(sender, "İlgi alanınız nedir?")
 				question_ilgi = true
 			} else if(text.includes("arkadaş")) {
-				
 				sendText(sender, "Arıyoruz.")
 			} else if(ilgi) {
 				addInterest(text)
