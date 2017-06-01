@@ -285,7 +285,7 @@ function getUsername(sender){
 			console.log("response body error")
 		}
     else {console.log(body);
-      jsonOBJ = JSON.parse(body);
+      jsonOBJ = body;
     return jsonOBJ.first_name;
   }
 	})
