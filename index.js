@@ -307,9 +307,9 @@ app.post('/webhook/', function(req, res) {
 				ilgi = true
 				sendText(sender, "İlgi alanınız nedir?")
 				question_ilgi = true
-			} /*else if (text.includes("dis")){
-				sendText(sender,getProfile(sender ))
-			}*/ else if(text.includes("arkadaş")) {
+			} else if (text.includes("dis")){
+				sendText(sender,getUsername(sender ))
+			} else if(text.includes("arkadaş")) {
 				sendText(sender, "Arıyoruz.")
 			} else if(ilgi) {
 				addInterest(text)
