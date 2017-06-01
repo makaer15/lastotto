@@ -70,7 +70,7 @@ app.get('/isUserExists', function (req, res){
       throw err;
     }
     res.send(["", rows]);
-})
+});
 
 app.get('/isInterestExists', function (req, res){ 
   // interestname will be got from the conversation.
@@ -81,7 +81,7 @@ app.get('/isInterestExists', function (req, res){
     }
     res.send(["", rows]);
   });
-})
+});
 
 
 app.get('/isInterestExistsForUser', function (req, res){ 
@@ -95,7 +95,7 @@ app.get('/isInterestExistsForUser', function (req, res){
     }
     res.send(["", rows]);
   });
-})
+});
 
 
 
@@ -108,7 +108,7 @@ app.get('/insertUser', function (req, res){
     }
     res.send(["", rows]);
   });
-})
+});
 
 
 app.get('/insertInterest', function (req, res){ 
@@ -120,7 +120,7 @@ app.get('/insertInterest', function (req, res){
     }
     res.send(["", rows]);
   });
-})
+});
 
 app.get('/insertInterestForUser', function (req, res){ 
   // userid will be got from the conversation.
@@ -133,7 +133,7 @@ app.get('/insertInterestForUser', function (req, res){
     res.send(["", rows]);
 
   });
-})
+});
 
 
 app.get('/queryInterestid', function (req, res){ 
@@ -145,7 +145,7 @@ app.get('/queryInterestid', function (req, res){
     }
     res.send(["", rows]);
   });
-})
+});
 
 app.get('/queryUsers', function (req, res){ 
   // interest will be got from the conversation and then its id will be found using methods when user asks for a recommendation.
