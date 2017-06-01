@@ -286,7 +286,7 @@ function getUsername(sender){
 		}
     else {console.log(body);
       jsonOBJ = body;
-      console.log(jsonOBJ.first_name);
+      console.log(jsonOBJ.first_name + ' ' +jsonOBJ.last_name);
       console.log('['+ body + ']')
     return jsonOBJ.first_name;
   }
