@@ -287,8 +287,10 @@ function getUsername(sender){
     else {console.log(body);
       jsonOBJ = body;
       console.log(jsonOBJ.first_name + ' ' +jsonOBJ.last_name);
-      console.log('['+ body + ']')
-    return jsonOBJ.first_name;
+      console.log('['+ jsonOBJ + ']')
+    // return jsonOBJ.first_name;
+    var username = jsonOBJ.first_name + ' ' +jsonOBJ.last_name
+    sendText(sender,username);
   }
 	})
 }
@@ -306,7 +308,8 @@ app.post('/webhook/', function(req, res) {
 				sendText(sender, "İlgi alanınız nedir?")
 				question_ilgi = true
 			} else if (text.includes("dis")){
-				sendText(sender,getUsername(sender ))
+				// sendText(sender,getUsername(sender))
+        getUsername(sender)
 			} else if(text.includes("arkadaş")) {
 				sendText(sender, "Arıyoruz.")
 			} else if(ilgi) {
