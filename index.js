@@ -291,7 +291,7 @@ function getProfile (id) {
 
 request.get((`https://graph.facebook.com/v2.6/${id}`, function(error, response, body){
     if(error) console.log(error);
-    else console.log(body);
+    else console.log(parse5.parse(body));
 }));
  }
 
