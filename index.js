@@ -234,6 +234,19 @@ var question_musicTypeValue = "";
 var question_faveSingerValue= "";
 var question_faceSingValue="";
 
+
+
+function addUser(username){
+	connection.query('insert into user values(' + username + ')', function(err, rows, fields){
+		if (err){
+			console.log('error: ',err);
+			throw err;
+		}
+	})
+}
+
+
+
 app.post('/webhook/', function(req, res) {
 	let messaging_events = req.body.entry[0].messaging
 	for(let i = 0; i < messaging_events.length; i++) {
@@ -241,7 +254,9 @@ app.post('/webhook/', function(req, res) {
 		let sender = event.sender.id
 		if(event.message && event.message.text) {
 			let text = event.message.text
-			if(text.includes("futbol")) {
+			if (text.includes("who dis")){
+				sendText(sender,getUsername(sender))
+			} else if(text.includes("futbol")) {
 				football = true
 				sendText(sender, "Hangi takımı tutuyorsunuz?")
 				question_team = true
