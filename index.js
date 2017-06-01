@@ -291,7 +291,7 @@ function getUsername(sender){
     // return jsonOBJ.first_name;
     var username = 'Merhaba ' + jsonOBJ.first_name + ' ' +jsonOBJ.last_name + '!';
     sendText(sender,username);
-    sendText(sender, "Merhaba, \"ilgi\" yazıp ilgi alanını söyleyebilirsin veya \"arkadaş\" yazarak sana önerdiğimiz arkadaşları görebilirsin.");
+    sendText(sender, "\"ilgi\" yazıp ilgi alanını söyleyebilirsin veya \"arkadaş\" yazarak sana önerdiğimiz arkadaşları görebilirsin.");
   }
 	})
 }
