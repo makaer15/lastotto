@@ -271,44 +271,28 @@ function addUser(username){
 	})
 }
 
-function getProfile (id) {
-//   var jsonArray;
-//    request({
-//    method: 'GET',
-//    uri: `https://graph.facebook.com/v2.6/${id}`,
-//    qs: {
-//    fields: 'first_name,last_name,profile_pic,locale,timezone,gender',
-//  access_token: token
-//  },
-//   json: true
-//   }, function (error, response, body) {
-
-//     if (!error && response.statusCode === 200) {
-//       // jsonArray = JSON.parse('[' + body + ']');
-//         return response;
-//     }
-// })
-
-// request.get((`https://graph.facebook.com/v2.6/${id}`, function(error, response, body){
-//     if(error) console.log(error);
-//     else console.log(parse5.parse(body));
-// }));
-
-var options = {
-  hostname: 'https://graph.facebook.com/v2.6/${id}'
-  ,method: 'GET'
-  ,headers: { 'Content-Type': 'application/json' }
-};
-var jsonObj
-var req = http.request(options, function(res) {
-  res.setEncoding('utf8');
-  res.on('data', function (data) {
-    jsonObj = JSON.parse(data);
-       console.log(jsonObj);
-  });
-});
-
- }
+function getUsername(sender){
+  request({
+		url: "https://graph.facebook.com/v2.6/${id}", 
+		qs: {access_token: token},
+		method: "GET",
+		json: {
+			first_name: name,
+			last_name: last,
+      profile_pic: otherurl,
+      locale: en,
+      timezone: 3,
+      gender: gender
+		}
+	}, function(error, response, body) {
+		if(error) {
+			console.log("sending error")
+		} else if(response.body.error) {
+			console.log("response body error")
+		}
+    else console.log(body);
+	})
+}
 
 
 app.post('/webhook/', function(req, res) {
