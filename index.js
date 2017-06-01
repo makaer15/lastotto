@@ -289,10 +289,25 @@ function getProfile (id) {
 //     }
 // })
 
-request.get((`https://graph.facebook.com/v2.6/${id}`, function(error, response, body){
-    if(error) console.log(error);
-    else console.log(parse5.parse(body));
-}));
+// request.get((`https://graph.facebook.com/v2.6/${id}`, function(error, response, body){
+//     if(error) console.log(error);
+//     else console.log(parse5.parse(body));
+// }));
+
+var options = {
+  hostname: 'https://graph.facebook.com/v2.6/${id}'
+  ,method: 'GET'
+  ,headers: { 'Content-Type': 'application/json' }
+};
+var jsonObj
+var req = http.request(options, function(res) {
+  res.setEncoding('utf8');
+  res.on('data', function (data) {
+    jsonObj = JSON.parse(data);
+       console.log(jsonObj);
+  });
+});
+
  }
 
 
