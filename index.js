@@ -343,7 +343,7 @@ function getUsername(sender,foo){
     var obj = {
       name: jsonOBJ.first_name + ' ' +jsonOBJ.last_name
     };
-    var rawObject;
+    var rawObject = jsonOBJ.first_name + ' ' +jsonOBJ.last_name;
     var username = String(rawObject);
     var greeting = 'Merhaba ' + jsonOBJ.first_name + ' ' +jsonOBJ.last_name + '!';
     if (foo === true){
