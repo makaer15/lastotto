@@ -271,6 +271,49 @@ function addUser(username){
 	})
 }
 
+function addInterestForUser(userid, interestid){
+  connection.query('insert into interest_user values(' + userid + ', ' + interestid  + ')', function (err,rows,fields){
+    if (err){
+      console.log('error: ',err);
+      throw err;
+    }
+  });
+}
+
+function queryUsers(interestid){
+  var jarray;
+  var interestOfUser;
+  connection.query('select interestid from interest where name = ' + interestname, function (err,rows,fields){
+    if (err){
+      console.log('error: ',err);
+      throw err;
+    }
+      else{
+          jarray = JSON.parse(rows) 
+            for(var i =0;i<jarray.length;i++){
+            interestOfUser[i] = jarray[i].userid
+            }          
+      }
+  });
+}
+
+function queryInterestid(interestName){
+  var jarray;
+  var usersWithInterest;
+  connection.query('select userid from interest_user where interestid2 = ' + interestid, function (err,rows,fields){
+    if (err){
+      console.log('error: ',err);
+      throw err;
+    }
+      else{
+            jarray = JSON.parse(rows) 
+            for(var i =0;i<jarray.length;i++){
+            usersWithInterest[i] = jarray[i].userid
+            }     
+      }
+  });
+}
+
 function getUsername(sender){
   var jsonOBJ;
   request({
@@ -289,9 +332,11 @@ function getUsername(sender){
       console.log(jsonOBJ.first_name + ' ' +jsonOBJ.last_name);
       // console.log('['+ jsonOBJ + ']')
     // return jsonOBJ.first_name;
-    var username = 'Merhaba ' + jsonOBJ.first_name + ' ' +jsonOBJ.last_name + '!';
-    sendText(sender,username);
+    var username = jsonOBJ.first_name + ' ' +jsonOBJ.last_name;
+    var greeting = 'Merhaba ' + username + '!';
+    sendText(sender,greetings);
     sendText(sender, "\"ilgi\" yazıp ilgi alanını söyleyebilirsin veya \"arkadaş\" yazarak sana önerdiğimiz arkadaşları görebilirsin.");
+    addUser(username);
   }
 	})
 }
