@@ -510,7 +510,17 @@ app.post('/webhook/', function(req, res) {
 // })
 
 
-
+function getUsername(sender) {
+var usersPublicProfile = 'https://graph.facebook.com/v2.6/' + sender + '?fields=first_name,last_name,profile_pic,locale,timezone,gender&access_token=' + token;
+request({
+    url: usersPublicProfile,
+    json: true // parse
+}, function (error, response, body) {
+        if (!error && response.statusCode === 200) {
+            return body.first_name;
+        }
+    });
+};
 
 function sendText(sender, text) {
 	let messageData = {text: text}
