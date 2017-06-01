@@ -263,6 +263,7 @@ function addInterest(interest){
 }
 
 function addUser(username){
+  console.log(username)
 	connection.query('insert into user values(\'' + username + '\')', function(err, rows, fields){
 		if (err){
 			console.log('error: ',err);
@@ -335,8 +336,8 @@ function getUsername(sender,foo){
 			console.log("can go past this doe")
 		}
     else {console.log(body);
-      jsonOBJ = body;
-      console.log(jsonOBJ.first_name + ' ' +jsonOBJ.last_name);
+      // jsonOBJ = body;
+      // console.log(jsonOBJ.first_name + ' ' +jsonOBJ.last_name);
       // console.log('['+ jsonOBJ + ']')
     // return jsonOBJ.first_name;
     var obj = {
