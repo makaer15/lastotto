@@ -291,6 +291,7 @@ function getUsername(sender){
 			console.log("response body error")
 		}
     else console.log(body);
+    return body;
 	})
 }
 
