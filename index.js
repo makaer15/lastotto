@@ -276,14 +276,7 @@ function getUsername(sender){
 		url: 'https://graph.facebook.com/v2.6/' + sender + '?fields=first_name,last_name,profile_pic,locale,timezone,gender&access_token=' + token, 
 		qs: {access_token: token},
 		method: 'GET',
-		json: {
-			first_name: first_name,
-			last_name: last_name,
-      profile_pic: otherurl,
-      locale: en_US,
-      timezone: 3,
-      gender: male
-		}
+		json: true
 	}, function(error, response, body) {
 		if(error) {
 			console.log("sending error")
