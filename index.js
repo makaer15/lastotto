@@ -314,7 +314,14 @@ function queryInterestid(interestName){
   });
 }
 
-function getUsername(sender){
+function end(){
+  var jsonArray;
+  var usersWithInterest;
+  var interestOfUser;
+  getUsername(sender, false);
+}
+
+function getUsername(sender,foo){
   var jsonOBJ;
   request({
 		url: 'https://graph.facebook.com/v2.6/' + sender + '?fields=first_name,last_name,profile_pic,locale,timezone,gender&access_token=' + token, 
@@ -334,9 +341,13 @@ function getUsername(sender){
     // return jsonOBJ.first_name;
     var username = jsonOBJ.first_name + ' ' +jsonOBJ.last_name;
     var greeting = 'Merhaba ' + username + '!';
+    if (foo === true){
     sendText(sender,greetings);
     sendText(sender, "\"ilgi\" yazıp ilgi alanını söyleyebilirsin veya \"arkadaş\" yazarak sana önerdiğimiz arkadaşları görebilirsin.");
     addUser(username);
+    }else if (foo === false){
+      console.log("mad skills")
+    }
   }
 	})
 }
@@ -357,13 +368,14 @@ app.post('/webhook/', function(req, res) {
 				// sendText(sender,getUsername(sender))
         getUsername(sender)
 			}*/ else if(text.includes("arkadaş")) {
+        end();
 				sendText(sender, "Arıyoruz.")
 			} else if(ilgi) {
 				addInterest(text)
 				question_ilgi = false
 				ilgi = false
 			} else {
-        getUsername(sender);
+        getUsername(sender,true);
 				// sendText(sender, "Merhaba, \"ilgi\" yazıp ilgi alanını söyleyebilirsin veya \"arkadaş\" yazarak sana önerdiğimiz arkadaşları görebilirsin.")
 			}
 		}
