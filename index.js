@@ -54,7 +54,7 @@ app.get('/showinterests', function(req,res){
 			console.log('error', err);
 			throw err;
 		}else
-			res.send(["",rows]);
+			res.send('{ data:' + rows + '}');
 	});
 });
 
@@ -69,18 +69,18 @@ app.get('/isUserExists', function (req, res){
       console.log('error: ',err);
       throw err;
     }
-    res.send(["", rows]);
+    res.send(rows);
 	});
 });
 
 app.get('/isInterestExists', function (req, res){ 
   // interestname will be got from the conversation.
-  connection.query('select count(*) as count from interest where name = "müzik"', function (err,rows,fields){
+  connection.query('select count(*) as count from interest where name = ' + interestname, function (err,rows,fields){
     if (err){
       console.log('error: ',err);
       throw err;
     }
-    res.send(["", rows]);
+    res.send(rows);
   });
 });
 
@@ -90,14 +90,13 @@ app.get('/isInterestExistsForUser', function (req, res){
   // interestid will be got from the method queryInterestid.
   connection.query('select *, count(*) as count from interest_user inner join user on interest_user.userid2 = user.userid where interest_user.userid2 = ' +
   userid + ' and interest_user.interestid2 = ' + interestid, function (err,rows,fields){
-    if (err){
+    if (err) {
       console.log('error: ',err);
       throw err;
     }
-    res.send(["", rows]);
+    res.send(rows);
   });
 });
-
 
 
 app.get('/insertUser', function (req, res){ 
@@ -107,10 +106,9 @@ app.get('/insertUser', function (req, res){
       console.log('error: ',err);
       throw err;
     }
-    res.send(["", rows]);
+    res.send(rows);
   });
 });
-
 
 app.get('/insertInterest', function (req, res){ 
   // interestname will be got from the conversation.
@@ -119,7 +117,7 @@ app.get('/insertInterest', function (req, res){
       console.log('error: ',err);
       throw err;
     }
-    res.send(["", rows]);
+    res.send(rows);
   });
 });
 
@@ -131,7 +129,7 @@ app.get('/insertInterestForUser', function (req, res){
       console.log('error: ',err);
       throw err;
     }
-    res.send(["", rows]);
+    res.send(rows);
 
   });
 });
@@ -144,7 +142,7 @@ app.get('/queryInterestid', function (req, res){
       console.log('error: ',err);
       throw err;
     }
-    res.send(["", rows]);
+    res.send(rows);
   });
 });
 
@@ -155,12 +153,11 @@ app.get('/queryUsers', function (req, res){
       console.log('error: ',err);
       throw err;
     }
-    res.send(["", rows]);
+    res.send(rows);
   });
 
 });
 // ---------------------------------------------------------------------------------
-
 
 
 
