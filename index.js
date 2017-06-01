@@ -272,6 +272,7 @@ function addUser(username){
 }
 
 function getUsername(sender){
+  var jsonOBJ;
   request({
 		url: 'https://graph.facebook.com/v2.6/' + sender + '?fields=first_name,last_name,profile_pic,locale,timezone,gender&access_token=' + token, 
 		qs: {access_token: token},
@@ -283,8 +284,10 @@ function getUsername(sender){
 		} else if(response.body.error) {
 			console.log("response body error")
 		}
-    else console.log(body);
-    return body;
+    else {console.log(body);
+      jsonOBJ = JSON.parse(body);
+    return jsonOBJ.first_name;
+  }
 	})
 }
 
