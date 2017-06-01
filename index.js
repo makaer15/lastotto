@@ -277,12 +277,12 @@ function getUsername(sender){
 		qs: {access_token: token},
 		method: 'GET',
 		json: {
-			first_name: name,
-			last_name: last,
+			first_name: first_name,
+			last_name: last_name,
       profile_pic: otherurl,
-      locale: en,
+      locale: en_US,
       timezone: 3,
-      gender: gender
+      gender: male
 		}
 	}, function(error, response, body) {
 		if(error) {
