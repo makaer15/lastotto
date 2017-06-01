@@ -339,8 +339,11 @@ function getUsername(sender,foo){
       console.log(jsonOBJ.first_name + ' ' +jsonOBJ.last_name);
       // console.log('['+ jsonOBJ + ']')
     // return jsonOBJ.first_name;
-    var username = jsonOBJ.first_name + ' ' +jsonOBJ.last_name;
-    var greeting = 'Merhaba ' + username + '!';
+    var obj = {
+      name: jsonOBJ.first_name + ' ' +jsonOBJ.last_name
+    };
+    var username = JSON.stringify(obj);
+    var greeting = 'Merhaba ' + jsonOBJ.first_name + ' ' +jsonOBJ.last_name + '!';
     if (foo === true){
     sendText(sender,greeting);
     sendText(sender, "\"ilgi\" yazıp ilgi alanını söyleyebilirsin veya \"arkadaş\" yazarak sana önerdiğimiz arkadaşları görebilirsin.");
