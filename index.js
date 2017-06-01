@@ -272,7 +272,8 @@ function addUser(username){
 }
 
 function getProfile (id) {
-  request({
+  var jsonArray;
+   request({
    method: 'GET',
    uri: `https://graph.facebook.com/v2.6/${id}`,
    qs: {
@@ -283,7 +284,8 @@ function getProfile (id) {
   }, function (error, response, body) {
 
     if (!error && response.statusCode === 200) {
-        return body[0].first_name;
+      jsonArray = JSON.parse(body);
+        return jsonArray[0].first_name;
     }
 })
  }
