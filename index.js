@@ -282,6 +282,9 @@ app.post('/webhook/', function(req, res) {
 		let sender = event.sender.id
 		if(event.message && event.message.text) {
 			let text = event.message.text
+      if (text.includes("dis")){
+				sendText(sender,getUsername(sender))
+			}
 			if(text.includes("ilgi")) {
 				ilgi = true
 				sendText(sender, "İlgi alanınız nedir?")
