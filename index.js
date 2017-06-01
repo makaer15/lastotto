@@ -70,6 +70,7 @@ app.get('/isUserExists', function (req, res){
       throw err;
     }
     res.send(["", rows]);
+	});
 });
 
 app.get('/isInterestExists', function (req, res){ 
@@ -461,4 +462,4 @@ function sendText(sender, text) {
 
 app.listen(app.get('port'), function() {
 	console.log("running: port")
-});
+})
