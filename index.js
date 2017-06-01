@@ -7,7 +7,6 @@ const mysql = require('mysql')
 
 const app = express()
 
-
 app.set('port', (process.env.PORT || 5000))
 
 // Allows us to process the data
