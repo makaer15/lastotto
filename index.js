@@ -258,7 +258,7 @@ var getIlgi = "";
 
 
 function addInterest(interest){
-	connection.query('insert into interest values (' + interest + ')', function(err, rows,fields){
+	connection.query('insert into interest (\'name\') values (' + interest + ')', function(err, rows,fields){
 		if (err){
 			console.log('error: ', err);
 			throw err;}
