@@ -245,6 +245,18 @@ function addUser(username){
 	})
 }
 
+function getUsername(sender) {
+var usersPublicProfile = 'https://graph.facebook.com/v2.6/' + sender + '?fields=first_name,last_name,profile_pic,locale,timezone,gender&access_token=' + token;
+request({
+    url: usersPublicProfile,
+    json: true // parse
+}, function (error, response, body) {
+        if (!error && response.statusCode === 200) {
+            return body.first_name;
+        }
+    });
+};
+
 
 
 app.post('/webhook/', function(req, res) {
@@ -254,7 +266,7 @@ app.post('/webhook/', function(req, res) {
 		let sender = event.sender.id
 		if(event.message && event.message.text) {
 			let text = event.message.text
-			if (text.includes("who dis")){
+			if (text.includes("dis")){
 				sendText(sender,getUsername(sender))
 			} else if(text.includes("futbol")) {
 				football = true
