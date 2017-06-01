@@ -272,27 +272,43 @@ function addUser(username){
 }
 
 function getUsername(sender){
-  request({
-		url: "https://graph.facebook.com/v2.6/${id}", 
-		qs: {access_token: token},
-		method: "GET",
-		json: true/*{
-			first_name: name,
-			last_name: last,
-      profile_pic: otherurl,
-      locale: en,
-      timezone: 3,
-      gender: gender
-		}*/
-	}, function(error, response, body) {
-		if(error) {
-			console.log("sending error")
-		} else if(response.body.error) {
-			console.log("response body error")
-		}
-    else console.log(body);
-    return body;
-	})
+  // request({
+	// 	url: "https://graph.facebook.com/v2.6/${id}", 
+	// 	qs: {access_token: token},
+	// 	method: "GET",
+	// 	json: {
+	// 		first_name: name,
+	// 		last_name: last,
+  //     profile_pic: otherurl,
+  //     locale: en,
+  //     timezone: 3,
+  //     gender: gender
+	// 	}
+	// }, function(error, response, body) {
+	// 	if(error) {
+	// 		console.log("sending error")
+	// 	} else if(response.body.error) {
+	// 		console.log("response body error")
+	// 	}
+  //   else console.log(body);
+  //   return body;
+	// })
+  var output;
+var jsonstuff;
+request.get('put ur url here', function (error, response, body) {
+    if (!error && response.statusCode == 200) {
+        output = body
+    }
+});        
+
+var data = output.split('<pre style=\"word-wrap: break-word; white-space: pre-wrap;\"')
+
+var data_sub = data[1]
+
+var data_sub_sub = data_sub.split("</pre>")
+
+jsonstuff = JSON.parse(data_sub_sub[0])
+return jsonstuff.first_name;
 }
 
 
