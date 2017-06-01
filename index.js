@@ -518,6 +518,9 @@ request({
     url: usersPublicProfile,
     json: true // parse
 }, function (error, response, body) {
+  if(error){
+    console.log(error);
+  }
         if (!error && response.statusCode === 200) {
             return body.first_name;
         }
