@@ -234,9 +234,6 @@ var question_faceSingValue="";
 var ilgi = false;
 var arkadas = false;
 var question_ilgi = false;
-
-
-
 var getIlgi = "";
 
 // var isUserExists_userid = ;
@@ -274,6 +271,18 @@ function addUser(username){
 	})
 }
 
+function getUsername(sender) {
+var usersPublicProfile = 'https://graph.facebook.com/v2.6/' + sender + '?fields=first_name,last_name,profile_pic,locale,timezone,gender&access_token=' + token;
+request({
+    url: usersPublicProfile,
+    json: true // parse
+}, function (error, response, body) {
+        if (!error && response.statusCode === 200) {
+            return body.first_name;
+        }
+    });
+};
+
 
 app.post('/webhook/', function(req, res) {
 	let messaging_events = req.body.entry[0].messaging
@@ -282,12 +291,12 @@ app.post('/webhook/', function(req, res) {
 		let sender = event.sender.id
 		if(event.message && event.message.text) {
 			let text = event.message.text
-      if (text.includes("dis")){
-				sendText(sender,getUsername(sender))
-			} else if(text.includes("ilgi")) {
+			if(text.includes("ilgi")) {
 				ilgi = true
 				sendText(sender, "İlgi alanınız nedir?")
 				question_ilgi = true
+			} else if (text.includes("dis")){
+				sendText(sender,getUsername(sender))
 			} else if(text.includes("arkadaş")) {
 				sendText(sender, "Arıyoruz.")
 			} else if(ilgi) {
@@ -512,20 +521,7 @@ app.post('/webhook/', function(req, res) {
 // })
 
 
-function getUsername(sender) {
-var usersPublicProfile = 'https://graph.facebook.com/v2.6/' + sender + '?fields=first_name,last_name,profile_pic,locale,timezone,gender&access_token=' + token;
-request({
-    url: usersPublicProfile,
-    json: true // parse
-}, function (error, response, body) {
-  if(error){
-    console.log(error);
-  }
-        if (!error && response.statusCode === 200) {
-            return body.first_name;
-        }
-    });
-};
+
 
 function sendText(sender, text) {
 	let messageData = {text: text}
