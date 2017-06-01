@@ -72,7 +72,7 @@ app.get('/showinterests', function(req,res){
 
 app.get('/isInterestExists', function (req, res){ 
   // interestname will be got from the conversation.
-  connection.isInterestExists('select count(*) as count from interest where name = müzik', function (err,rows,fields){
+  connection.isInterestExists('select count(*) as count from interest where name = "müzik"', function (err,rows,fields){
     if (err){
       console.log('error: ',err);
       throw err;
