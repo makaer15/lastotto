@@ -293,6 +293,7 @@ function getUsername(sender){
   //   else console.log(body);
   //   return body;
 	// })
+  var url = 'https://graph.facebook.com/v2.6/' + sender + '?fields=first_name,last_name,profile_pic,locale,timezone,gender&access_token=' + token;
   var output;
 var jsonstuff;
 request.get('put ur url here', function (error, response, body) {
