@@ -255,7 +255,7 @@ var getIlgi = "";
 
 
 function addInterest(interest){
-	connection.query('replace into \'interest\' set \'name\' = \'' + interest + '\'', function(err, rows,fields){
+	connection.query('replace into interest(name) values (\'' + interest + '\')', function(err, rows,fields){
 		if (err){
 			console.log('error: ', err);
 			throw err;}
@@ -264,7 +264,7 @@ function addInterest(interest){
 
 function addUser(username){
   console.log(username)
-	connection.query('replace into \'user\' set \'userid\' = \'' +username+ '\'', function(err, rows, fields){
+	connection.query('replace into user values (\'' +username+ '\')', function(err, rows, fields){
 		if (err){
 			console.log('error: ',err);
 			throw err;
