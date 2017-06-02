@@ -295,31 +295,33 @@ function getPeopleWithInterests(sender){
       jsonArray = JSON.parse(JSON.stringify(rows));
       for (var i = 0; i < jsonArray.length;i++){
         for (var k = i; k < jsonArray.length;k++){
-          if (jsonArray[i].interest === jsonArray[k].interest && username !== jsonArray[k].username){
-						if (names.length < 5){
-							for (var t = names.length; t<5;t++){
-								var copy = false;
-								for (var b = 0; b<names.length;b++){
-									if (names[t] === names[b]){
-										copy = true;
-										break;
-									}
-									else {copy = false;}
-								}
-								if (copy === false){
-									names[t] = jsonArray[k].username;
-								}
-							}
-						}
+          if (jsonArray[i].interest === jsonArray[k].interest && username !== jsonArray[k].username && jsonArray[k].username !== 'undefined')
+					{
+						sendText(sender,jsonArray[i])
+						// if (names.length < 5){
+						// 	for (var t = names.length; t<5;t++){
+						// 		var copy = false;
+						// 		for (var b = 0; b<names.length;b++){
+						// 			if (names[t] === names[b]){
+						// 				copy = true;
+						// 				break;
+						// 			}
+						// 			else {copy = false;}
+						// 		}
+						// 		if (copy === false){
+						// 			names[t] = jsonArray[k].username;
+						// 		}
+						// 	}
+						// }
 						}
           }
         }
       }
-			if(names.length>=1){
-				for (var t = 0; t<names.length;i++){
-					sendText(sender,names[t]);
-				}
-			}
+			// if(names.length>=1){
+			// 	for (var t = 0; t<names.length;i++){
+			// 		sendText(sender,names[t]);
+			// 	}
+			// }
     
   })
 }
