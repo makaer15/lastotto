@@ -290,9 +290,13 @@ function getPeopleWithInterests(sender){
       // console.log(rows);
       
       jsonArray = JSON.parse(JSON.stringify(rows));
-      console.log(jsonArray)
+      console.log(jsonArray[2].interest)
       for (var i = 0; i < jsonArray.length;i++){
-        // console.log(JSON.stringify(jsonArray[i]));
+        for (var k = i; k < jsonArray.length;k++){
+          if (jsonArray[i].interest === jsonArray[k].interest && jsonArray[i].username !== jsonArray[k].username){
+            console.log('match');
+          }
+        }
       }
     }
   })
