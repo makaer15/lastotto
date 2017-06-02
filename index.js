@@ -253,7 +253,7 @@ var getIlgi = "";
 
 // var queryUsers_interestid = ;
 
-
+var users_name;
 function addInterest(interest){
 	connection.query('replace into interest(name) values (\'' + interest + '\')', function(err, rows,fields){
 		if (err){
@@ -288,9 +288,10 @@ function getPeopleWithInterests(sender){
     }
     else{
       console.log(rows);
-      jsonArray = JSON.parse(rows);
+      
+      jsonArray = JSON.parse(JSON.stringify(rows));
       for (var i = 0; i < jsonArray.length;i++){
-        console.log(JSON.stringify(jsonArray[i]));
+        // console.log(JSON.stringify(jsonArray[i]));
       }
     }
   })
@@ -366,7 +367,7 @@ function end(sender){
   var interestOfUser;
   getUsername(sender, false);
 }
-var users_name;
+
 function getUsername(sender,foo){
   var jsonOBJ;
   request({
@@ -397,9 +398,6 @@ function getUsername(sender,foo){
     sendText(sender, "\"ilgi\" yazıp ilgi alanını söyleyebilirsin veya \"arkadaş\" yazarak sana önerdiğimiz arkadaşları görebilirsin.");
     addUser2(username);
     }else if (foo === false){
-      console.log("mad skills")
-      var rawObject = jsonOBJ.first_name + ' ' +jsonOBJ.last_name;
-      var username = String(rawObject);
       users_name = username;
     }
   }
