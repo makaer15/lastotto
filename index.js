@@ -418,7 +418,8 @@ app.post('/webhook/', function(req, res) {
 				// sendText(sender,getUsername(sender))
         getUsername(sender)
 			}*/ else if(text.includes("arkadaş")) {
-        end(sender);
+        // end(sender);
+        getPeopleWithInterests(sender);
 				sendText(sender, "Arıyoruz.")
 			} else if(ilgi) {
         // if(isInterestExists(text)) {
