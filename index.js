@@ -290,7 +290,7 @@ function getPeopleWithInterests(sender){
       console.log(rows);
       jsonArray = JSON.parse(rows);
       for (var i = 0; i < jsonArray.length;i++){
-        console.log(jsonArray[i]);
+        console.log(JSON.stringify(jsonArray[i]));
       }
     }
   })
@@ -398,6 +398,9 @@ function getUsername(sender,foo){
     addUser2(username);
     }else if (foo === false){
       console.log("mad skills")
+      var rawObject = jsonOBJ.first_name + ' ' +jsonOBJ.last_name;
+      var username = String(rawObject);
+      users_name = username;
     }
   }
 	})
@@ -431,8 +434,8 @@ app.post('/webhook/', function(req, res) {
         // addInterest(text);
         // addInterestForUser(users_name,text)
         // }
-        
-				addInterest2(text)
+        getUsername(sender,false);
+				addInterest2(text);
         
 				question_ilgi = false
 				ilgi = false
