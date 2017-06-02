@@ -378,7 +378,7 @@ app.post('/webhook/', function(req, res) {
 				sendText(sender, "Arıyoruz.")
 			} else if(ilgi) {
 				addInterest(text)
-        addInterestForUser(text)
+        addInterestForUser(users_name,text)
 				question_ilgi = false
 				ilgi = false
 			} else if (text.includes("merhaba") || text.includes("Merhaba")){
