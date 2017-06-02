@@ -279,6 +279,22 @@ function addInterest2(interest){
   })
 }
 
+function getPeopleWithInterests(sender){
+  var jsonArray;
+  connection.query('Select * from user_table', function(error, rows, fields){
+    if (error){
+      console.log('error: ', error);
+      throw error;
+    }
+    else{
+      jsonArray = JSON.parse(rows);
+      for (var i = 0; i < jsonArray.length;i++){
+        console.log(jsonArray[i]);
+      }
+    }
+  })
+}
+
 
 // function addUser3(username){
 //   console.log(username)
