@@ -271,7 +271,7 @@ function addUser2(username){
   })
 }
 function addInterest2(interest){
-  connection.query('replace into user_table(username) values(\'' + interest + '\')', function(error, rows, fields){
+  connection.query('replace into user_table(interest) values(\'' + interest + '\')', function(error, rows, fields){
     if (error){
       console.log('error:', error);
       throw error;
