@@ -293,15 +293,22 @@ function getPeopleWithInterests(sender){
       // console.log(rows);
       
       jsonArray = JSON.parse(JSON.stringify(rows));
-      console.log(jsonArray[2].interest)
       for (var i = 0; i < jsonArray.length;i++){
         for (var k = i; k < jsonArray.length;k++){
           if (jsonArray[i].interest === jsonArray[k].interest && username !== jsonArray[k].username){
 						if (names.length < 5){
 							for (var t = names.length; t<5;t++){
-							if (!(names.indexOf(jsonArray[k].username) > -1) && jsonArray[k] !== 'undefined'){
-								names[t] = jsonArray[k].username;
-								break;
+								var copy = false;
+								for (var b = 0; b<names.length;b++){
+									if (names[t] === names[b]){
+										copy = true;
+										break;
+									}
+									else {copt = false;}
+								}
+								if (copy === false){
+									names[t] = jsonArray[k].username;
+								}
 							}
 						}
 						}
