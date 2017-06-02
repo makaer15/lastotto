@@ -287,9 +287,10 @@ function getPeopleWithInterests(sender){
       throw error;
     }
     else{
-      console.log(rows);
+      // console.log(rows);
       
       jsonArray = JSON.parse(JSON.stringify(rows));
+      console.log(jsonArray)
       for (var i = 0; i < jsonArray.length;i++){
         // console.log(JSON.stringify(jsonArray[i]));
       }
