@@ -416,7 +416,7 @@ function isInterestExists(interestname){
     }
     console.log(rows);
     jarray = JSON.parse(rows) 
-    var2 = jarray[0].count
+    var2 = jarray[1].count
     if(var2 == 1) {
       return true;
     } else return false;
