@@ -264,7 +264,7 @@ function addInterest(interest){
 
 function addUser(username){
   console.log(username)
-	connection.query('begin insert into user values(\'' + username + '\') where not exists (select * from user where userid = \'' + username + '\'); end', function(err, rows, fields){
+	connection.query('begin if not exists (select * from user where userid = \''+ username+'\') begin insert into user values(\'' + username + '\') end end', function(err, rows, fields){
 		if (err){
 			console.log('error: ',err);
 			throw err;
