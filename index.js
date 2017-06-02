@@ -321,7 +321,7 @@ function end(sender){
   var interestOfUser;
   getUsername(sender, false);
 }
-
+var users_name;
 function getUsername(sender,foo){
   var jsonOBJ;
   request({
@@ -345,6 +345,7 @@ function getUsername(sender,foo){
     };
     var rawObject = jsonOBJ.first_name + ' ' +jsonOBJ.last_name;
     var username = String(rawObject);
+    users_name = username;
     var greeting = 'Merhaba ' + jsonOBJ.first_name + ' ' +jsonOBJ.last_name + '!';
     if (foo === true){
     sendText(sender,greeting);
