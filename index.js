@@ -280,31 +280,8 @@ function addInterest2(interest){
 }
 
 function getPeopleWithInterests(sender){
+	getUsername(sender,false);
 	var username = users_name;
-	var jsonOBJ;
-  request({
-		url: 'https://graph.facebook.com/v2.6/' + sender + '?fields=first_name,last_name,profile_pic,locale,timezone,gender&access_token=' + token, 
-		qs: {access_token: token},
-		method: 'GET',
-		json: true
-	}, function(error, response, body) {
-		if(error) {
-			console.log("sending error")
-		} else if(response.body.error) {
-			console.log("can go past this doe")
-		}
-    else {console.log(body);
-      jsonOBJ = body;
-      // console.log(jsonOBJ.first_name + ' ' +jsonOBJ.last_name);
-      // console.log('['+ jsonOBJ + ']')
-    // return jsonOBJ.first_name;
-    var obj = {
-      name: jsonOBJ.first_name + ' ' +jsonOBJ.last_name
-    };
-    var rawObject = jsonOBJ.first_name + ' ' +jsonOBJ.last_name;
-    username = String(rawObject);
-  }
-	})
   var jsonArray;
 	var names = [];
   connection.query('Select * from user_table', function(error, rows, fields){
@@ -340,16 +317,6 @@ function getPeopleWithInterests(sender){
   })
 }
 
-
-// function addUser3(username){
-//   console.log(username)
-// 	connection.query('INSERT INTO user (userid) SELECT * FROM (\'' + username + '\') AS tmp WHERE NOT EXISTS) (SELECT userid FROM user WHERE userid = \'' + username + '\')', function(err, rows, fields){
-// 		if (err){
-// 			console.log('error: ',err);
-// 			throw err;
-// 		}
-// 	})
-// }
 
 function addUser(username){
   console.log(username)
@@ -441,7 +408,7 @@ function getUsername(sender,foo){
     sendText(sender, "\"ilgi\" yazıp ilgi alanını söyleyebilirsin veya \"arkadaş\" yazarak sana önerdiğimiz arkadaşları görebilirsin.");
     addUser2(username);
     }else if (foo === false){
-      users_name = username;
+      // users_name = username;
     }
   }
 	})
