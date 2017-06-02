@@ -262,6 +262,29 @@ function addInterest(interest){
 	})
 }
 
+// function addUser2(username){
+//   connection.query('replace into user_table values (\'' +username+ '\')', function(error, rows, fields){
+//     if (error){
+//       console.log('error:', error);
+//       throw error;
+//     }
+//   })
+// }
+// function addInterest2(interest){
+//   connection.query('UPDATE user_table SET ')
+// }
+
+
+function addUser3(username){
+  console.log(username)
+	connection.query('INSERT INTO user (userid) SELECT * FROM (\'' + username + '\') AS tmp WHERE NOT EXISTS) (SELECT userid FROM user WHERE userid = \'' + username + '\')', function(err, rows, fields){
+		if (err){
+			console.log('error: ',err);
+			throw err;
+		}
+	})
+}
+
 function addUser(username){
   console.log(username)
 	connection.query('replace into user values (\'' +username+ '\')', function(err, rows, fields){
@@ -350,7 +373,7 @@ function getUsername(sender,foo){
     if (foo === true){
     sendText(sender,greeting);
     sendText(sender, "\"ilgi\" yazıp ilgi alanını söyleyebilirsin veya \"arkadaş\" yazarak sana önerdiğimiz arkadaşları görebilirsin.");
-    addUser(username);
+    addUser3(username);
     }else if (foo === false){
       console.log("mad skills")
     }
@@ -377,16 +400,16 @@ app.post('/webhook/', function(req, res) {
         end(sender);
 				sendText(sender, "Arıyoruz.")
 			} else if(ilgi) {
-        if(isInterestExists(text)) {
-          sendText(sender, "Bu ilgi alanı databasede mevcut görünüyor.")
-          addInterestForUser(users_name,text)
-        } else {
-          sendText(sender, "Yeni ilgi alanı ekleniyor.")
-        addInterest(text);
-        addInterestForUser(users_name,text)
-        }
+        // if(isInterestExists(text)) {
+        //   sendText(sender, "Bu ilgi alanı databasede mevcut görünüyor.")
+        //   addInterestForUser(users_name,text)
+        // } else {
+        //   sendText(sender, "Yeni ilgi alanı ekleniyor.")
+        // addInterest(text);
+        // addInterestForUser(users_name,text)
+        // }
         
-				
+				// addInterest(text)
         
 				question_ilgi = false
 				ilgi = false
