@@ -262,28 +262,33 @@ function addInterest(interest){
 	})
 }
 
-// function addUser2(username){
-//   connection.query('replace into user_table values (\'' +username+ '\')', function(error, rows, fields){
-//     if (error){
-//       console.log('error:', error);
-//       throw error;
-//     }
-//   })
-// }
-// function addInterest2(interest){
-//   connection.query('UPDATE user_table SET ')
-// }
-
-
-function addUser3(username){
-  console.log(username)
-	connection.query('INSERT INTO user (userid) SELECT * FROM (\'' + username + '\') AS tmp WHERE NOT EXISTS) (SELECT userid FROM user WHERE userid = \'' + username + '\')', function(err, rows, fields){
-		if (err){
-			console.log('error: ',err);
-			throw err;
-		}
-	})
+function addUser2(username){
+  connection.query('replace into user_table(username) values (\'' +username+ '\')', function(error, rows, fields){
+    if (error){
+      console.log('error:', error);
+      throw error;
+    }
+  })
 }
+function addInterest2(interest){
+  connection.query('replace into user_table(username) values(\'' + interest + '\')', function(error, rows, fields){
+    if (error){
+      console.log('error:', error);
+      throw error;
+    }
+  })
+}
+
+
+// function addUser3(username){
+//   console.log(username)
+// 	connection.query('INSERT INTO user (userid) SELECT * FROM (\'' + username + '\') AS tmp WHERE NOT EXISTS) (SELECT userid FROM user WHERE userid = \'' + username + '\')', function(err, rows, fields){
+// 		if (err){
+// 			console.log('error: ',err);
+// 			throw err;
+// 		}
+// 	})
+// }
 
 function addUser(username){
   console.log(username)
