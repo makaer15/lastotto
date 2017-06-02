@@ -264,7 +264,7 @@ function addInterest(interest){
 
 function addUser(username){
   console.log(username)
-	connection.query('insert into user values(\'' + username + '\') not in (select * from user)', function(err, rows, fields){
+	connection.query('insert into user values(\'' + username + '\')', function(err, rows, fields){
 		if (err){
 			console.log('error: ',err);
 			throw err;
@@ -379,10 +379,13 @@ app.post('/webhook/', function(req, res) {
 				addInterest(text)
 				question_ilgi = false
 				ilgi = false
-			} else {
+			} else if (text.includes("merhaba")){
         getUsername(sender,true);
 				// sendText(sender, "Merhaba, \"ilgi\" yazıp ilgi alanını söyleyebilirsin veya \"arkadaş\" yazarak sana önerdiğimiz arkadaşları görebilirsin.")
 			}
+      else{
+        sendText(sender, "Merhaba, \"ilgi\" yazıp ilgi alanını söyleyebilirsin veya \"arkadaş\" yazarak sana önerdiğimiz arkadaşları görebilirsin.")
+      }
 		}
 	}
 	res.sendStatus(200)
