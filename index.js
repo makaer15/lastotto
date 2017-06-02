@@ -272,8 +272,8 @@ function addUser(username){
 	})
 }
 
-function addInterestForUser(userid, interestid){
-  connection.query('insert into interest_user values(' + userid + ', ' + interestid  + ')', function (err,rows,fields){
+function addInterestForUser(userid, interestname){
+  connection.query('insert into interest_user values(\'' + userid + '\', \'' + interestname  + '\')', function (err,rows,fields){
     if (err){
       console.log('error: ',err);
       throw err;
