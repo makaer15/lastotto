@@ -293,8 +293,8 @@ function getPeopleWithInterests(sender){
       console.log(jsonArray[2].interest)
       for (var i = 0; i < jsonArray.length;i++){
         for (var k = i; k < jsonArray.length;k++){
-          if (jsonArray[i].interest === jsonArray[k].interest && jsonArray[i].username !== jsonArray[k].username){
-            console.log('match');
+          if (jsonArray[i].interest === jsonArray[k].interest && users_name !== jsonArray[k].username){
+            sendText(sender,jsonArray[k].username)
           }
         }
       }
@@ -410,49 +410,49 @@ function getUsername(sender,foo){
 }
 
 
-app.post('/webhook/', function(req, res) {
-	let messaging_events = req.body.entry[0].messaging
-	for(let i = 0; i < messaging_events.length; i++) {
-		let event = messaging_events[i];
-		let sender = event.sender.id
-		if(event.message && event.message.text) {
-			let text = event.message.text
-			if(text.includes("ilgi")) {
-				ilgi = true
-				sendText(sender, "İlgi alanınız nedir?")
-				question_ilgi = true
-			} /*else if (text.includes("dis")){
-				// sendText(sender,getUsername(sender))
-        getUsername(sender)
-			}*/ else if(text.includes("arkadaş")) {
-        // end(sender);
-        getPeopleWithInterests(sender);
-				sendText(sender, "Arıyoruz.")
-			} else if(ilgi) {
-        // if(isInterestExists(text)) {
-        //   sendText(sender, "Bu ilgi alanı databasede mevcut görünüyor.")
-        //   addInterestForUser(users_name,text)
-        // } else {
-        //   sendText(sender, "Yeni ilgi alanı ekleniyor.")
-        // addInterest(text);
-        // addInterestForUser(users_name,text)
-        // }
-        getUsername(sender,false);
-				addInterest2(text);
+// app.post('/webhook/', function(req, res) {
+// 	let messaging_events = req.body.entry[0].messaging
+// 	for(let i = 0; i < messaging_events.length; i++) {
+// 		let event = messaging_events[i];
+// 		let sender = event.sender.id
+// 		if(event.message && event.message.text) {
+// 			let text = event.message.text
+// 			if(text.includes("ilgi")) {
+// 				ilgi = true
+// 				sendText(sender, "İlgi alanınız nedir?")
+// 				question_ilgi = true
+// 			} /*else if (text.includes("dis")){
+// 				// sendText(sender,getUsername(sender))
+//         getUsername(sender)
+// 			}*/ else if(text.includes("arkadaş")) {
+//         // end(sender);
+//         getPeopleWithInterests(sender);
+// 				sendText(sender, "Arıyoruz.")
+// 			} else if(ilgi) {
+//         // if(isInterestExists(text)) {
+//         //   sendText(sender, "Bu ilgi alanı databasede mevcut görünüyor.")
+//         //   addInterestForUser(users_name,text)
+//         // } else {
+//         //   sendText(sender, "Yeni ilgi alanı ekleniyor.")
+//         // addInterest(text);
+//         // addInterestForUser(users_name,text)
+//         // }
+//         getUsername(sender,false);
+// 				addInterest2(text);
         
-				question_ilgi = false
-				ilgi = false
-			} else if (text.includes("merhaba") || text.includes("Merhaba")){
-        getUsername(sender,true);
-				// sendText(sender, "Merhaba, \"ilgi\" yazıp ilgi alanını söyleyebilirsin veya \"arkadaş\" yazarak sana önerdiğimiz arkadaşları görebilirsin.")
-			}
-      else{
-        sendText(sender, "Merhaba, \"ilgi\" yazıp ilgi alanını söyleyebilirsin veya \"arkadaş\" yazarak sana önerdiğimiz arkadaşları görebilirsin.")
-      }
-		}
-	}
-	res.sendStatus(200)
-})
+// 				question_ilgi = false
+// 				ilgi = false
+// 			} else if (text.includes("merhaba") || text.includes("Merhaba")){
+//         getUsername(sender,true);
+// 				// sendText(sender, "Merhaba, \"ilgi\" yazıp ilgi alanını söyleyebilirsin veya \"arkadaş\" yazarak sana önerdiğimiz arkadaşları görebilirsin.")
+// 			}
+//       else{
+//         sendText(sender, "Merhaba, \"ilgi\" yazıp ilgi alanını söyleyebilirsin veya \"arkadaş\" yazarak sana önerdiğimiz arkadaşları görebilirsin.")
+//       }
+// 		}
+// 	}
+// 	res.sendStatus(200)
+// })
 
 
 
