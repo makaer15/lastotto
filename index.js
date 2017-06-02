@@ -693,7 +693,7 @@ app.post('/webhook/', function(req, res) {
 			    }
 			 
             } else {
-				sendText(sender, "Merhaba, \"ilgi\" yazıp ilgi alanını söyleyebilirsin veya \"arkadaş\" yazarak sana önerdiğimiz arkadaşları görebilirsin."			}
+				sendText(sender, "Merhaba, \"ilgi\" yazıp ilgi alanını söyleyebilirsin veya \"arkadaş\" yazarak sana önerdiğimiz arkadaşları görebilirsin.")		}
 		}
 	}
 	res.sendStatus(200)
