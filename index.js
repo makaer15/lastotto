@@ -315,7 +315,7 @@ function queryInterestid(interestName){
   });
 }
 
-function end(){
+function end(sender){
   var jsonArray;
   var usersWithInterest;
   var interestOfUser;
@@ -373,7 +373,7 @@ app.post('/webhook/', function(req, res) {
 				// sendText(sender,getUsername(sender))
         getUsername(sender)
 			}*/ else if(text.includes("arkadaş")) {
-        end();
+        end(sender);
 				sendText(sender, "Arıyoruz.")
 			} else if(ilgi) {
 				addInterest(text)
