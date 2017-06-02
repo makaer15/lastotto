@@ -377,6 +377,7 @@ app.post('/webhook/', function(req, res) {
         end(sender);
 				sendText(sender, "Arıyoruz.")
 			} else if(ilgi) {
+        isInterestExists(text)
 				addInterest(text)
         addInterestForUser(users_name,text)
 				question_ilgi = false
@@ -399,7 +400,19 @@ app.post('/webhook/', function(req, res) {
 
 
 
-
+function isInterestExists(interestname){
+  connection.query('select count(*) as count from interest where name = \"' + interestname + '\"', function (err,rows,fields){
+    if (err){
+      console.log('error: ',err);
+      throw err;
+    }
+    jarray = JSON.parse(rows) 
+    var2 = jarray.count
+    if(var2 == 1) {
+      return true;
+    } else return false;
+  });
+}
 
 
 
