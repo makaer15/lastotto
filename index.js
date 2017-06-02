@@ -378,7 +378,7 @@ function getUsername(sender,foo){
     if (foo === true){
     sendText(sender,greeting);
     sendText(sender, "\"ilgi\" yazıp ilgi alanını söyleyebilirsin veya \"arkadaş\" yazarak sana önerdiğimiz arkadaşları görebilirsin.");
-    addUser3(username);
+    addUser2(username);
     }else if (foo === false){
       console.log("mad skills")
     }
@@ -414,7 +414,7 @@ app.post('/webhook/', function(req, res) {
         // addInterestForUser(users_name,text)
         // }
         
-				// addInterest(text)
+				addInterest2(text)
         
 				question_ilgi = false
 				ilgi = false
