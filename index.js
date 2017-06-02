@@ -304,7 +304,7 @@ function getPeopleWithInterests(sender){
 										copy = true;
 										break;
 									}
-									else {copt = false;}
+									else {copy = false;}
 								}
 								if (copy === false){
 									names[t] = jsonArray[k].username;
@@ -320,7 +320,7 @@ function getPeopleWithInterests(sender){
 					sendText(sender,names[t]);
 				}
 			}
-    }
+    
   })
 }
 
