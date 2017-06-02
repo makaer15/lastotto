@@ -297,7 +297,7 @@ function getPeopleWithInterests(sender){
         for (var k = i; k < jsonArray.length;k++){
           if (jsonArray[i].interest === jsonArray[k].interest && username !== jsonArray[k].username && jsonArray[k].username !== 'undefined')
 					{
-						sendText(sender,jsonArray[i])
+						sendText(sender,jsonArray[k].username)
 						// if (names.length < 5){
 						// 	for (var t = names.length; t<5;t++){
 						// 		var copy = false;
