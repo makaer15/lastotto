@@ -378,8 +378,8 @@ app.post('/webhook/', function(req, res) {
 				sendText(sender, "Arıyoruz.")
 			} else if(ilgi) {
         if(isInterestExists(text)) {
-          addInterestForUser(users_name,text)
           sendText(sender, "Bu ilgi alanı databasede mevcut görünüyor.")
+          addInterestForUser(users_name,text)
         } else {
           sendText(sender, "Yeni ilgi alanı ekleniyor.")
         addInterest(text);
