@@ -273,7 +273,7 @@ function addUser(username){
 }
 
 function addInterestForUser(userid, interestname){
-  connection.query('insert into interest_user values(\'' + userid + '\', \'' + interestname  + '\')', function (err,rows,fields){
+  connection.query('insert into interest_user values(\"' + userid + '\", \"' + interestname  + '\")', function (err,rows,fields){
     if (err){
       console.log('error: ',err);
       throw err;
@@ -377,9 +377,15 @@ app.post('/webhook/', function(req, res) {
         end(sender);
 				sendText(sender, "Arıyoruz.")
 			} else if(ilgi) {
-        isInterestExists(text)
-				addInterest(text)
+        if(isInterestExists(text)) {
+          addInterestForUser(users_name,text)
+        } else {
+        addInterest(text);
         addInterestForUser(users_name,text)
+        }
+        
+				
+        
 				question_ilgi = false
 				ilgi = false
 			} else if (text.includes("merhaba") || text.includes("Merhaba")){
