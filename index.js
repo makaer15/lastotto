@@ -331,6 +331,11 @@ function getPeopleWithInterests(sender){
           }
         }
       }
+			if(names.length>=1){
+				for (var t = 0; t<names.length;i++){
+					sendText(sender,names[t]);
+				}
+			}
     }
   })
 }
