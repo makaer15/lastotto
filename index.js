@@ -280,7 +280,33 @@ function addInterest2(interest){
 }
 
 function getPeopleWithInterests(sender){
+	var username = users_name;
+	var jsonOBJ;
+  request({
+		url: 'https://graph.facebook.com/v2.6/' + sender + '?fields=first_name,last_name,profile_pic,locale,timezone,gender&access_token=' + token, 
+		qs: {access_token: token},
+		method: 'GET',
+		json: true
+	}, function(error, response, body) {
+		if(error) {
+			console.log("sending error")
+		} else if(response.body.error) {
+			console.log("can go past this doe")
+		}
+    else {console.log(body);
+      jsonOBJ = body;
+      // console.log(jsonOBJ.first_name + ' ' +jsonOBJ.last_name);
+      // console.log('['+ jsonOBJ + ']')
+    // return jsonOBJ.first_name;
+    var obj = {
+      name: jsonOBJ.first_name + ' ' +jsonOBJ.last_name
+    };
+    var rawObject = jsonOBJ.first_name + ' ' +jsonOBJ.last_name;
+    username = String(rawObject);
+  }
+	})
   var jsonArray;
+	var names = [];
   connection.query('Select * from user_table', function(error, rows, fields){
     if (error){
       console.log('error: ', error);
@@ -293,8 +319,15 @@ function getPeopleWithInterests(sender){
       console.log(jsonArray[2].interest)
       for (var i = 0; i < jsonArray.length;i++){
         for (var k = i; k < jsonArray.length;k++){
-          if (jsonArray[i].interest === jsonArray[k].interest && users_name !== jsonArray[k].username){
-            sendText(sender,jsonArray[k].username)
+          if (jsonArray[i].interest === jsonArray[k].interest && username !== jsonArray[k].username){
+						if (names.length < 5){
+							for (var t = names.length; t<5;t++){
+							if (!(names.indexOf(jsonArray[k].username) > -1) && jsonArray[k] !== 'undefined'){
+								names[t] = jsonArray[k].username;
+								break;
+							}
+						}
+						}
           }
         }
       }
